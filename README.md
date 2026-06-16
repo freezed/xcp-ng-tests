@@ -1,5 +1,7 @@
 # Test scripts for XCP-ng
 
+A quick start is available on [`TLDR` page](TLDR.md).
+
 Note: this is a perpetual work in progress. If you encounter any obstacles or bugs, let us know!
 
 ## Main requirements
