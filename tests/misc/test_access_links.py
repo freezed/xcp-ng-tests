@@ -12,6 +12,7 @@ from lib.host import Host
 
 @pytest.mark.parametrize("command_id", ["curl", "wget"])
 @pytest.mark.parametrize("url_id", [
+    "afpy",
     "xoa",
     "xcpng",
     "vates"
@@ -24,6 +25,7 @@ def test_access_links(host: Host, command_id: str, url_id: str) -> None:
     command = {"curl": ["curl", "-fsSL"],
                "wget": ["wget", "-qO-"]}[command_id]
     url = {
+        "afpy": "https://git.afpy.org/assets/licenses.txt",
         "xoa": "https://xoa.io/deploy",
         "xcpng": "https://updates.xcp-ng.org/README.txt",
         "vates": "https://repo.vates.tech/README.txt"
