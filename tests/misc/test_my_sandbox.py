@@ -14,7 +14,7 @@ from lib.vdi import VDI
 
 def test_vm_stop_start(imported_vm: VM) -> None:
     vm = imported_vm
-    if (vm.is_running()):
+    if vm.is_running():
         logging.info("VM already running, shutting it DOWN first ⌛")
         vm.shutdown(verify=True)
     logging.info("VM is DOWN, starting it now ⌛")
@@ -33,7 +33,7 @@ def test_file_create_delete_on_vm(imported_vm: VM) -> None:
     vm = imported_vm
     tmp_file = f"/tmp/file_from-{test_file_create_delete_on_vm.__name__}"
 
-    if (not vm.is_running):
+    if not vm.is_running:
         logging.info("VM is DOWN, starting it now ⌛")
         vm.start()
 
@@ -61,9 +61,8 @@ def test_vdi_reset_on_boot_change(imported_vm: VM) -> None:
 
     if original_param_value == "persist":
         vdi.param_set("on-boot", "reset")
-
-    vm.start()
-    vm.wait_for_os_booted()
+        vm.start()
+        vm.wait_for_os_booted()
 
     tmp_file = f"/dummy-{int(time.time())}.tmp"
     vm.ssh_touch_file(tmp_file)
